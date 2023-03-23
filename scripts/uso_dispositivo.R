@@ -40,6 +40,8 @@ class(daily_activity$activitydate)
 daily_activity <- daily_activity %>%
   rename(date = activitydate)
 
+daily_activity$date <- format(daily_activity$date, format = "%m-%d-%y")
+
 head(daily_activity)
 
 ## Análisis de rango de uso de los dispositivos inteligentes
