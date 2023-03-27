@@ -7,6 +7,7 @@ library(janitor)
 library(skimr)
 library(lubridate)
 library(IRdisplay)
+library(data.table)
 
 ## Creación de data.frame daily_activity
 
