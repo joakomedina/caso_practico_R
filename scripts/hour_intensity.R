@@ -1,4 +1,5 @@
 # Creación data.frame hourly intensities
+# Con este análisis vemos el patron de horas de mayor actividad física
 
 hourly_intensities <- read_csv("C:\\Users\\Joako\\Documents\\R_proyectos\\Caso_practico\\data_trabajo\\hourlyIntensities_merged.csv")
 head(hourly_intensities)
