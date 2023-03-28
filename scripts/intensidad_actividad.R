@@ -81,4 +81,9 @@ escale_avg_long <- escale_avg %>%
 
 write.csv(escale_avg_long, "escale_avg_long.csv", row.names = FALSE)
 
+ggplot(escale_avg_long, aes(x = intensity, y = mean)) +
+  geom_bar(stat = "identity", fill = "#76b7b2") +
+  labs(title = "Relación entre tiempo e intensidad de la actividad física",
+       x = "Intensidad de la actividad física", y = "Promedio de minutos mensual")
+
                                  
