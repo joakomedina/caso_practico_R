@@ -1,7 +1,7 @@
 
-## Creación de data.frame min_intensities_narrow
+## Creación de data.frame min_intensities_narrow para estimar tiempo de intensidad física minutos vs intensidad
 
-min_intensities_narrow <- 
+min_intensities_activity <- 
   read_csv("C:\\Users\\Joako\\Documents\\R_curso_analisis_datos\\Caso_practico_R\\data\\minuteIntensitiesNarrow_merged.csv")
 head(min_intensities_narrow)
 
@@ -9,55 +9,55 @@ head(min_intensities_narrow)
 
 ###### Verificación registros de usuarios
 
-n_unique(min_intensities_narrow$Id)
+n_unique(min_intensities_activity$Id)
 
 ###### Verificación de duplicados
 
-sum(duplicated(min_intensities_narrow))
+sum(duplicated(min_intensities_activity))
 
 ###### Limpieza nombres de columnas
 
-clean_names(min_intensities_narrow)
+clean_names(min_intensities_activity)
 
 ###### Formateo a minúsculas 
 
-min_intensities_narrow <- rename_with(min_intensities_narrow, tolower)
+min_intensities_activity <- rename_with(min_intensities_activity, tolower)
 
 ###### Formateo de la columna activity_date a tipo date y renombrado de columna a date y división de la columna date para que solo
 ###### tenga datos fecha y creación de columna time para que contenga el registro de tiempo
 
-min_intensities_narrow_3 <- min_intensities_narrow %>% 
+min_intensities <- min_intensities_activity %>% 
   rename(date = activityminute) %>% 
   mutate(date = as.POSIXct(date,format ="%m/%d/%Y %I:%M:%S %p" , tz=Sys.timezone()))
 
-min_intensities_narrow_3$time <- format(min_intensities_narrow_3$date, format = "%H:%M:%S")
-min_intensities_narrow_3$date <- format(min_intensities_narrow_3$date, format = "%m-%d-%Y")
+min_intensities$time <- format(min_intensities$date, format = "%H:%M:%S")
+min_intensities$date <- format(min_intensities$date, format = "%m-%d-%Y")
 
 
-min_intensities_narrow_3$date <- as.Date(strptime(min_intensities_narrow_3$date, format = "%m-%d-%Y"))
-class(min_intensities_narrow_3$date)
+min_intensities$date <- as.Date(strptime(min_intensities$date, format = "%m-%d-%Y"))
+class(min_intensities$date)
 
-min_intensities_narrow_3$time <- as.ITime(min_intensities_narrow_3$time, format = "%H:%M:%S")
-class(min_intensities_narrow_3$time)
+min_intensities$time <- as.ITime(min_intensities$time, format = "%H:%M:%S")
+class(min_intensities$time)
 
-class(min_intensities_narrow_3$intensity)
+class(min_intensities$intensity)
 
 ## Análisis patron de intensidad
 
-counts_0 <- min_intensities_narrow_3 %>%
+counts_0 <- min_intensities %>%
   group_by(id) %>%
   summarise(intensity_0 = sum(intensity == 0))
 
-counts_1 <- min_intensities_narrow_3 %>%
+counts_1 <- min_intensities %>%
   group_by(id) %>%
   summarise(intensity_1 = sum(intensity == 1))
 
-counts_2 <- min_intensities_narrow_3 %>%
+counts_2 <- min_intensities %>%
   group_by(id) %>%
   summarise(intensity_2 = sum(intensity == 2))
 
 
-counts_3 <- min_intensities_narrow_3 %>%
+counts_3 <- min_intensities %>%
   group_by(id) %>%
   summarise(intensity_3 = sum(intensity == 3))
 
