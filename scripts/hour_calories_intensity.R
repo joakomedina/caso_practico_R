@@ -1,4 +1,10 @@
+
 # Con este análisis vemos los minutos de intensidad en cada hora de actividad física
+# Este es el script que debo utilizar para el informe, junto con su gráfico
+# Creo que no aporta nada nuevo, no lo voy a utilizar o si lo utilizo es haciendo un merge con intensities_calories para que tenga
+# más respaldo
+# Este data frame hace enfasís en la intensidad que no es más que la sumatoria de intensidad diaria expresada en la columna 
+# totalintensity
 
 hourly_intensities <- read_csv("C:\\Users\\Joako\\Documents\\R_proyectos\\Caso_practico\\data_trabajo\\hourlyIntensities_merged.csv")
 head(hourly_intensities)
@@ -20,11 +26,11 @@ hourly_intensities$date <- format(hourly_intensities$date, format = "%m-%d-%y")
 
 class(hourly_intensities$date)
 
-hourly_activity <- hourly_intensities %>%
+hourly_intensities_v1 <- hourly_intensities %>%
   group_by(time) %>%
   summarise(avg_intensity = mean(totalintensity))
 
-ggplot(hourly_activity, aes(x = time, y = avg_intensity)) +
+ggplot(hourly_intensities_v1, aes(x = time, y = avg_intensity)) +
   geom_bar(stat = "identity", fill = "#76b7b2") +
-  labs(title = "Patron de minutos de mayor intensidad en horas de mayor actividad ",
-       x = "Hora", y = "Avg de minutos de intensidad")
+  labs(title = "Horas del día de mayor intensidad de la actividad física ",
+       x = "Hora", y = "Promedio de intensidad")
