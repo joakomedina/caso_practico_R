@@ -5,6 +5,7 @@
 # más respaldo
 # Este data frame hace enfasís en la intensidad que no es más que la sumatoria de intensidad diaria expresada en la columna 
 # totalintensity
+# Definitivamente no usaré este data.frame porque en el nuevo intensities_calories ya la información esta contenida
 
 hourly_intensities <- read_csv("C:\\Users\\Joako\\Documents\\R_proyectos\\Caso_practico\\data_trabajo\\hourlyIntensities_merged.csv")
 head(hourly_intensities)
