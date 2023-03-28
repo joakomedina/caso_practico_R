@@ -1,5 +1,7 @@
 # Creación data.frame hourly intensities
 # Con este análisis vemos el patron de horas de mayor actividad física
+# Este es el data frame para las horas según la intensidad pero también para juntarlo con hourly_activity y construir una relación
+# entre intensidad y gasto calórico en un nuevo data.frame llamado intensities_calories
 
 hourly_intensities <- read_csv("C:\\Users\\Joako\\Documents\\R_proyectos\\Caso_practico\\data_trabajo\\hourlyIntensities_merged.csv")
 head(hourly_intensities)
@@ -30,7 +32,8 @@ intensities <- hourly_intensities %>%
 
 ggplot(intensities, aes(x = time, y = avg_intensity)) +
   geom_bar(stat = "identity", fill = "#76b7b2") +
+  theme(axis.text.x = element_text(angle = 45))+
   labs(title = "Patron de horas de mayor actividad física ",
-       x = "Hora", y = "Promedio de intensidad")
+       x = "Tiempo en horas", y = "Promedio de intensidad")
 
 
