@@ -1,6 +1,6 @@
 
-## Creación de data.frame sleep_day_df evaluar el patron de sueño y si hay relación entre el los registros de sueño (siesta)
-# y la actividad física
+## Creación de data.frame sleep_day_df 
+# Análisis patron de sueño y summary de variable
 
 sleep_day_df <- 
   read_csv("C:\\Users\\Joako\\Documents\\R_curso_analisis_datos\\Caso_practico_R\\data\\sleepDay_merged.csv")
