@@ -42,6 +42,12 @@ sleep_day_df <- sleep_day_df %>%
 sleep_day_df$time <- format(sleep_day_df$date, format = "%H:%M:%S")
 sleep_day_df$date <- format(sleep_day_df$date, format = "%m-%d-%y")
 
+sleep_day_df$date <- as.Date(strptime(sleep_day_df$date, format = "%m-%d-%Y"))
+class(sleep_day_df$date)
+
+sleep_day_df$time <- as.ITime(sleep_day_df$time, format = "%H:%M:%S")
+class(sleep_day_df$time)
+
 head(sleep_day_df)
 
 ## Resúmen horas de sueño
