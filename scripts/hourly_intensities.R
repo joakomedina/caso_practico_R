@@ -1,4 +1,6 @@
-# Creación data.frame hourly intensities para determinar el promedio de intensidad de la actividad física en la horas de mayor actividad
+# Creación data.frame hourly intensities para determinar el promedio de intensidad de la actividad física en la horas de mayor 
+#actividad
+# Este script también ignorar porque está repetido. Con el que me voy a quedar es con hour_intensity
 
 hourly_intensities <- read_csv("C:\\Users\\Joako\\Documents\\R_proyectos\\Caso_practico\\data_trabajo\\hourlyIntensities_merged.csv")
 head(hourly_intensities)
