@@ -35,14 +35,11 @@ daily_activity <- rename_with(daily_activity, tolower)
 
 ###### Formateo de la columna activity_date a tipo date y renombrado de columna a date
 
-daily_activity$activitydate <- mdy(daily_activity$activitydate)
-class(daily_activity$activitydate)
+daily_activity <- daily_activity %>% 
+  rename(date = activitydate) %>% 
+  mutate(date = as.POSIXct(date,format ="%m/%d/%Y" , tz=Sys.timezone()))
 
-daily_activity <- daily_activity %>%
-  rename(date = activitydate)
-
-daily_activity$date <- format(daily_activity$date, format = "%m-%d-%y")
-
+daily_activity$date <- format(daily_activity$date, format = "%m-%d-%Y")
 head(daily_activity)
 
 ## Análisis de rango de uso de los dispositivos inteligentes
