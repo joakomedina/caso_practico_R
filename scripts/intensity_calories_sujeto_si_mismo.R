@@ -37,7 +37,6 @@ min_calories <- min_calories %>%
   rename(date = activityminute) %>% 
   mutate(date = as.POSIXct(date,format ="%m/%d/%Y %I:%M:%S %p" , tz=Sys.timezone())) %>%
   rename(averagecalories = calories)
-
 min_calories$time <- format(min_calories$date, format = "%H:%M:%S")
 min_calories$date <- format(min_calories$date, format = "%m-%d-%y")
 
@@ -80,7 +79,7 @@ head(calories_id)
  # ifelse(group_total_calories$totaldiaria > total_calories_id$totaldiaria, "encima", "debajo")
 
 group_calories$rendimiento <- 
-  ifelse(group_total_calories$totaldiaria > total_calories_id$totaldiaria, "encima", "debajo")
+  ifelse(group_calories$totaldiaria > calories_id$totaldiaria, "encima", "debajo")
 
 resumen <- table(group_calories$id, group_calories$rendimiento)
 
