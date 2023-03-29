@@ -6,23 +6,23 @@
 # Sin embargo la mayor utilidad de este data frame es la combinación con hourly_intensity para establecer una 
 # relación entre la intensidad de la actividad física y el gasto calórico
 
-hourly_activity <- read_csv("C:\\Users\\Joako\\Documents\\R_proyectos\\Caso_practico\\data_trabajo\\hourlyCalories_merged.csv") 
-head(hourly_activity)
+hourly_calories <- read_csv("C:\\Users\\Joako\\Documents\\R_proyectos\\Caso_practico\\data_trabajo\\hourlyCalories_merged.csv") 
+head(hourly_calories)
 
-n_unique(hourly_activity$Id)
+n_unique(hourly_calories$Id)
 
-sum(duplicated(hourly_activity))
+sum(duplicated(hourly_calories))
 
-clean_names(hourly_activity)
+clean_names(hourly_calories)
 
-hourly_activity <- rename_with(hourly_activity, tolower)
+hourly_calories <- rename_with(hourly_calories, tolower)
 
 
-hourly_activity <- hourly_activity %>%
+hourly_calories <- hourly_calories %>%
   rename(date = activityhour) %>%
   mutate(date = as.POSIXct(date,format ="%m/%d/%Y %I:%M:%S %p" , tz=Sys.timezone()))
-hourly_activity$time <- format(hourly_activity$date, format = "%H:%M:%S")
-hourly_activity$date <- format(hourly_activity$date, format = "%m-%d-%y")
+hourly_calories$time <- format(hourly_calories$date, format = "%H:%M:%S")
+hourly_calories$date <- format(hourly_calories$date, format = "%m-%d-%y")
 
 
 # Hasta aqui el formateo con columnas date y time en formato Date y ITime
@@ -30,7 +30,7 @@ hourly_activity$date <- format(hourly_activity$date, format = "%m-%d-%y")
   # El summarise creo que no es útil, me lleva a un gráfico final igual que el de hourly_intensities pero desde las calorías
   # Puedo hacer un merge con hourly_intensities para relacionar intensidad con gasto calórico.
 
-hourly <- hourly_activity %>%
+hourly <- hourly_calories %>%
   group_by(time) %>%
   summarise(avg_intensity = mean(calories))
   
@@ -50,7 +50,9 @@ ggplot(hourly, aes(x=time, y= avg_intensity)) +
 
 # Merge con hourly
 
-intensities_calories <- merge(hourly_activity, hourly_intensities, by =c("id", "date", "time"))
+intensities_calories <- merge(hourly_calories, hourly_intensities, by =c("id", "date", "time"))
+class(intensities_calories$date)
+class(intensities_calories$time)
 
         # Ponerlo en suspenso a menos que sea necesario para el análisis         
           ## hourly_activity$date <- as.Date(strptime(hourly_activity$date, format = "%m-%d-%Y"))
