@@ -1,7 +1,7 @@
 
 ## Creación de data.frame min_intensities_narrow para estimar tiempo de intensidad física minutos vs intensidad
 
-min_intensities_activity <- 
+min_intensities <- 
   read_csv("C:\\Users\\Joako\\Documents\\R_curso_analisis_datos\\Caso_practico_R\\data\\minuteIntensitiesNarrow_merged.csv")
 head(min_intensities_narrow)
 
@@ -9,24 +9,24 @@ head(min_intensities_narrow)
 
 ###### Verificación registros de usuarios
 
-n_unique(min_intensities_activity$Id)
+n_unique(min_intensities$Id)
 
 ###### Verificación de duplicados
 
-sum(duplicated(min_intensities_activity))
+sum(duplicated(min_intensities))
 
 ###### Limpieza nombres de columnas
 
-clean_names(min_intensities_activity)
+clean_names(min_intensities)
 
 ###### Formateo a minúsculas 
 
-min_intensities_activity <- rename_with(min_intensities_activity, tolower)
+min_intensities <- rename_with(min_intensities, tolower)
 
 ###### Formateo de la columna activity_date a tipo date y renombrado de columna a date y división de la columna date para que solo
 ###### tenga datos fecha y creación de columna time para que contenga el registro de tiempo
 
-min_intensities <- min_intensities_activity %>% 
+min_intensities <- min_intensities %>% 
   rename(date = activityminute) %>% 
   mutate(date = as.POSIXct(date,format ="%m/%d/%Y %I:%M:%S %p" , tz=Sys.timezone()))
 
