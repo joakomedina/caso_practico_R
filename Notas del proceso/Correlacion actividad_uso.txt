@@ -1,0 +1,10 @@
+La correlación es -0.08
+
+Una correlación de -0.08 indica que existe una relación negativa débil entre las variables activity y minutesused. Es decir, que a medida que la actividad física aumenta, la cantidad de minutos de uso de la aplicación disminuye ligeramente, pero esta relación no es muy fuerte.
+
+Y en el gráfico tal como se ve, la mayoría de los datos se agrupan alrededor de los 1000 minutos de uso y la línea de tendencia va en aumento hasta la media y luego decrece, entonces esto sugiere que hay una relación no lineal entre las variables activity y minutesused. En otras palabras, la relación no es una línea recta, sino que hay una curva en forma de U invertida o una parábola que describe la relación.
+
+Esto puede ser el resultado de factores no lineales que influyen en la relación entre la actividad física y el uso de la aplicación. Por ejemplo, es posible que haya un punto óptimo de actividad física en el que los usuarios estén más motivados y comprometidos con el uso de la aplicación, y que después de ese punto la relación se invierta y los usuarios comiencen a perder interés.
+
+
+Existe una correlación positiva moderada (0.47) entre la variable "calories" y el min_activity, lo que sugiere que a medida que aumenta el tiempo de actividad, también tiende a aumentar el número de calorías quemadas.
