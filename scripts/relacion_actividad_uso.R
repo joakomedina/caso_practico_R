@@ -26,8 +26,10 @@ actividad_uso %>%
 # grafico
 
 ggplot(data=actividad_uso)+
-  geom_smooth(mapping = aes(x=minutesused, y=min_activity))+
-  geom_point(mapping = aes(x=minutesused, y=min_activity))
+  geom_smooth(mapping = aes(x=minutesused, y=min_activity), color="#ff9da7")+
+  geom_point(mapping = aes(x=minutesused, y=min_activity), color="#4e79a7")+
+  labs(title = "Relación entre minutos de uso y la actividad física",
+       x = "Minutos de uso", y = "Minutos de actividad")
 
 # correlación
 
